@@ -1,0 +1,58 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Main gradient for the L -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d691e6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#b69aff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9ab5ff;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Background gradient -->
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#2d1b4e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f0a1a;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Inner shadow -->
+    <filter id="innerShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
+      <feOffset dx="1" dy="1" result="offset"/>
+      <feFlood flood-color="#000" flood-opacity="0.3"/>
+      <feComposite in2="offset" operator="in"/>
+      <feMerge> 
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#bgGradient)" stroke="url(#mainGradient)" stroke-width="2" opacity="0.9"/>
+  
+  <!-- Subtle ring -->
+  <circle cx="32" cy="32" r="26" fill="none" stroke="url(#mainGradient)" stroke-width="0.5" opacity="0.4"/>
+  
+  <!-- Main L letter -->
+  <path d="M 18 16 L 18 46 L 42 46 L 42 40 L 26 40 L 26 16 Z" 
+        fill="url(#mainGradient)" 
+        filter="url(#glow)"
+        stroke="rgba(255,255,255,0.2)" 
+        stroke-width="0.5"/>
+  
+  <!-- Highlight on the L -->
+  <path d="M 20 18 L 20 38 L 24 38 L 24 42 L 40 42 L 40 44 L 18 44 L 18 16 Z" 
+        fill="rgba(255,255,255,0.15)" 
+        opacity="0.8"/>
+  
+  <!-- Small accent dot -->
+  <circle cx="44" cy="20" r="2" fill="url(#mainGradient)" opacity="0.8" filter="url(#glow)"/>
+</svg>

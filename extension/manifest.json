@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Luzz",
+  "version": "1.0.0",
+  "description": "The LinkedIn Cleanser",
+  
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  
+  "host_permissions": [
+    "*://www.linkedin.com/*",
+    "http://localhost:3000/*",
+    "https://luzz-backend-production.up.railway.app/*"
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["*://www.linkedin.com/*"],
+      "js": ["src/content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "assets/icon.png"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["src/*"],
+      "matches": ["*://www.linkedin.com/*"]
+    }
+  ]
+}

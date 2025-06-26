@@ -1,0 +1,119 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+/* =======================================================
+   🌑 LUZZ Final Styles
+======================================================= */
+
+/* Theme Variables */
+:root {
+  /* Base Radius */
+  --radius: 0.625rem;
+
+  /* Colors */
+  --background: #0a0a0a;
+  --foreground: #e5e7eb;
+
+  /* Accents */
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+
+  --secondary: #22c55e;
+  --secondary-foreground: #000000;
+
+  --muted: #1f1f1f;
+  --muted-foreground: #9ca3af;
+
+  --border: #27272a;
+  --ring: #3b82f6;
+
+  /* Destructive / Alerts */
+  --destructive: #ef4444;
+
+  /* Cards / Popovers */
+  --card: #111111;
+  --card-foreground: #e5e7eb;
+
+  --popover: #111111;
+  --popover-foreground: #e5e7eb;
+
+  /* Sidebar */
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #e5e7eb;
+
+  /* Charts / Misc */
+  --chart-1: #3b82f6;
+  --chart-2: #22c55e;
+  --chart-3: #ef4444;
+  --chart-4: #f59e0b;
+  --chart-5: #8b5cf6;
+}
+
+@layer base {
+  * {
+    border: none;
+  }
+  body {
+    @apply antialiased;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
+
+@keyframes radiant {
+  0%, 90%, 100% {
+    background-position: calc(-100% - var(--radiant-width)) 0;
+  }
+  30%, 60% {
+    background-position: calc(100% + var(--radiant-width)) 0;
+  }
+}
+.radiant-animation {
+  animation: radiant var(--radiant-anim-duration) infinite;
+}
+
+
+@theme inline {
+  --animate-first: moveVertical 30s ease infinite;
+  --animate-second: moveInCircle 20s reverse infinite;
+  --animate-third: moveInCircle 40s linear infinite;
+  --animate-fourth: moveHorizontal 40s ease infinite;
+  --animate-fifth: moveInCircle 20s ease infinite;
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
